@@ -1,0 +1,17 @@
+# Nix build results
+result
+result-*
+
+# Nix development environment
+.direnv/
+.envrc
+
+# Editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# macOS
+.DS_Store
