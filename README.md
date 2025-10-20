@@ -4,9 +4,9 @@ OpenCode - AI coding agent built for the terminal, packaged for NixOS and Nix us
 
 ## About
 
-This flake provides OpenCode v0.15.7 from npm platform-specific packages.
+This flake provides OpenCode v0.15.8 from npm platform-specific packages.
 
-- **Version**: 0.15.7
+- **Version**: 0.15.8
 - **Source**: npm registry (opencode-linux-x64, etc.)
 - **License**: MIT
 - **Homepage**: https://opencode.ai
@@ -16,6 +16,7 @@ This flake provides OpenCode v0.15.7 from npm platform-specific packages.
 ⚠️ **Special Packaging Requirements**
 
 This package uses a Bun-based binary that requires special handling:
+
 - `autoPatchelfHook` and `strip` are **disabled** to prevent binary corruption
 - Only the ELF interpreter is manually patched using `patchelf`
 - See `docs/custom-package-troubleshooting.md` for details
