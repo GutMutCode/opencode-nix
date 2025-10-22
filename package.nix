@@ -18,14 +18,14 @@ let
     else throw "Unsupported OS for opencode";
 
   # Latest version
-  version = "0.15.10";
+  version = "0.15.13";
 
   # SHA256 hashes for npm packages (nix base32 format)
   hashes = {
-    x86_64-linux = "18psblmcbna2xhy9f77h0k53am8dpp456c0a8nqq9rvp7yn5skgi";
-    aarch64-linux = "0mmcyfp3pjn4hi3h0nlmp6myyr0nmh60rai2pkvgkcqpsmcnhcpm";
-    x86_64-darwin = "1xicgawqndqhjfh9jvv8bd3si49mdy7b28ai3zjxcxrnlhcxx90k";
-    aarch64-darwin = "1pz66lf37hkz5clpsyrk0zn8x1ahvh5djk833h23iir8x9y8yz63";
+    x86_64-linux = "1iissg5lr51w5y1awqavwgrhrh1n41mdn6w3dzjyzqjzzmbdd5ms";
+    aarch64-linux = "1zh00v8m3d3vid2dfwr56mjj7a2qpxsfngp2pf1ma9sw55q8j98k";
+    x86_64-darwin = "1dq72ixz42acrddkjmdxnx1w0b9x75ffi6f7sn0xsl4viczi0fh5";
+    aarch64-darwin = "0kzk1g191zkqgrpx2khq21bm81i3vwj09nmhcl1p3kiqh4mml09d";
   };
 
   # Fetch the platform-specific npm package
