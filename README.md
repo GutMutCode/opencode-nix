@@ -4,9 +4,9 @@ OpenCode - AI coding agent built for the terminal, packaged for NixOS and Nix us
 
 ## About
 
-This flake provides OpenCode v1.0.25 from npm platform-specific packages.
+This flake provides OpenCode v1.0.45 from npm platform-specific packages.
 
-- **Version**: 1.0.25
+- **Version**: 1.0.45
 - **Source**: npm registry (opencode-linux-x64, etc.)
 - **License**: MIT
 - **Homepage**: https://opencode.ai
@@ -64,7 +64,7 @@ nix run github:GutMutCode/opencode-nix
 
 ```bash
 # Check version
-opencode --version  # Should show: 1.0.25
+opencode --version  # Should show: 1.0.45
 
 # List available models
 opencode models
