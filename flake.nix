@@ -14,7 +14,7 @@
       # Overlay for adding opencode package to nixpkgs
       overlays.default = import ./overlay.nix;
 
-      # NixOS module
+      # NixOS module (requires home-manager)
       nixosModules.default = import ./module.nix;
 
       # home-manager module
