@@ -1,8 +1,8 @@
 { lib
 , stdenv
 , fetchurl
-, patchelf
-, glibc
+, patchelf ? null
+, glibc ? null
 }:
 
 let
@@ -18,14 +18,14 @@ let
     else throw "Unsupported OS for opencode";
 
   # Latest version
-  version = "1.3.13";
+  version = "1.18.21";
 
   # SHA256 hashes for npm packages (nix base32 format)
   hashes = {
-    x86_64-linux = "1b358lwgsjpc8j2qdvs9iv7fvkf9k51rdwqy0vh5xnlylrl0h4yp";
-    aarch64-linux = "1y9i1by85ydcqrfwnl8caiajgdgipwhp1lnvsq48mg1bs8kfcxy9";
-    x86_64-darwin = "1l0sbk26ld0cdahk6bdz2wj82r75h7awpy1xqjn6b2gzl064ppfd";
-    aarch64-darwin = "1yzfz79p4r1q1xrn2qk1xjkil0k70vr11fj7ihmrc71qbdlab3sj";
+    x86_64-linux = "0mr9q4zywqwx0bnm67zysyqwkpbnbp0d4hjf16q004bgw96zzncj";
+    aarch64-linux = "0clahc4sv84g1993byg7za8vwz76q37f9v40vzpp6qfs7551wfs4";
+    x86_64-darwin = "11k816frml44p1s9s26hw624idc0qcfkqs8jprxxbp2ms3p62xk3";
+    aarch64-darwin = "0px8vfs3h7n81m8cxlgk8zbmhkz3k6pn50js9m47szd6w2r9p7yj";
   };
 
   # Fetch the platform-specific npm package
@@ -40,7 +40,7 @@ stdenv.mkDerivation {
   inherit src;
 
   # Do NOT use autoPatchelfHook - it corrupts the Bun-based binary
-  nativeBuildInputs = [ patchelf ];
+  nativeBuildInputs = lib.optional stdenv.hostPlatform.isLinux patchelf;
 
   # npm tarballs have a 'package' directory
   sourceRoot = "package";
@@ -56,8 +56,10 @@ stdenv.mkDerivation {
     # Install binary
     install -Dm755 bin/opencode $out/bin/opencode
 
-    # Only patch the interpreter, nothing else
+    ${lib.optionalString stdenv.hostPlatform.isLinux ''
+    # Only patch the interpreter on Linux, nothing else
     patchelf --set-interpreter ${glibc}/lib/ld-linux-x86-64.so.2 $out/bin/opencode
+    ''}
 
     runHook postInstall
   '';
